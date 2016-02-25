@@ -1,0 +1,47 @@
+Mooc\QuizBundle\Entity\Reponse:
+    type: entity
+    table: reponse
+    indexes:
+        idquestion:
+            columns:
+                - idquestion
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        reponsetext:
+            type: string
+            nullable: false
+            length: 5000
+            fixed: false
+            comment: ''
+        reponsecorrecttext:
+            type: string
+            nullable: true
+            length: 5000
+            fixed: false
+            comment: ''
+        reponsecorrectradio:
+            type: boolean
+            nullable: True
+            comment: ''
+            default: '0'
+    manyToOne:
+        idquestion:
+            targetEntity: Question
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            nullable: True
+            joinColumns:
+                idquestion:
+                    referencedColumnName: ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

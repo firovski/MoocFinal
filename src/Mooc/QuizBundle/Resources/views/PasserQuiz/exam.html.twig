@@ -1,0 +1,226 @@
+{% extends 'MoocQuizBundle::layout.html.twig' %}
+
+			{% block body -%}
+   
+
+    
+
+
+
+    <script  language="javascript">
+                function checkVal(form) {
+                var point = 0;
+                        var score = 0;{% for question in questions %}
+                        point = point +{{question.point}};   
+                                            {% if question.type=='Choix multiple'%}
+                                            var resultat = false;
+                        {% for rep in reponse %}
+            {% if question.id == rep.idquestion.id %}
+                    if (document.form.chk{{rep.id}}.checked)
+                                {
+                                var x = document.form.chk{{rep.id}}.value;
+                                {% if rep.reponsecorrectradio %}
+                                
+                                resultat = true;
+                                {% else %} 
+                                    resultat=false;
+                                {% endif %}
+                            }
+            {% endif %}
+            {% endfor %}
+                            if (resultat == true)
+                            {
+                            score = score +{{question.point}} ;
+                            }
+                {% elseif question.type=='Choix unique' %}
+                        var resultat = false;
+                var x = document.form.radio{{question.id}}.value;
+                    {% for rep in reponse %}
+                    {% if question.id == rep.idquestion.id %}
+                    {% if rep.reponsecorrectradio == true %}
+                        
+                                
+                                if (x == "{{rep.reponsecorrecttext}}")
+                                {
+                                resultat = true;
+                                }
+                            
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                            if (resultat == true)
+                            {
+                            score = score +{{question.point}} ;
+                            }
+                        {% else %}
+                        var resultat = false;
+                                            {% for rep in reponse %}
+                            {% if question.id == rep.idquestion.id %}
+                                        var x = document.form.inp{{rep.id}}.value.toString();
+                                        if (x == "{{rep.reponsecorrecttext}}")
+                                {
+                                resultat = true;
+                                }
+                            {% endif %}
+                            {% endfor %}
+                            if (resultat == true)
+                            {
+                            score = score +{{question.point}} ;
+                            }
+                                {% endif %}
+                                    {% endfor %}
+                    
+                    window.document.form.text1.value=Math.floor((score / point) * 100);
+                    window.document.form.text2.value={{quiz.id}};
+                    window.document.form.text3.value=1;
+
+}
+</script>
+
+			<!-- Page title -->
+            <div class="page_top_wrap page_top_title page_top_breadcrumbs sc_pt_st1">
+                <div class="content_wrap">
+                    <div class="breadcrumbs">
+					</div>
+                    <h1 class="page_title"> Quiz d'entrainement </h1>
+                </div>
+            </div>
+			<!-- /Page title -->
+			<!-- Content with sidebar -->
+            <div class="page_content_wrap">
+                <div class="content_wrap">
+					<!-- Content -->
+                    <div class="content">
+
+                        <article class="post_item post_item_single page">							
+                            <section class="post_content">
+                                                            
+								<!-- Quotes -->
+                                <h3> {{ quiz.quiznom }} <span> Duree {{ quiz.time }} </span> </h3>
+								<blockquote cite="#" class="sc_quote">
+									<p>{{ quiz.quizdescription }}</p>
+								</blockquote>
+								<div class="sc_line sc_line_style_solid"></div>
+								<!-- /Quotes -->
+								<!-- Accordion section -->
+								<div class="sc_section" data-animation="animated fadeInUp normal">
+									                                    <form name="form" method="POST">
+
+									{% for question in questions %}
+                                            <div class="sc_accordion sc_accordion_style_1" data-active="0">
+
+										<div class="sc_accordion_item odd first">
+											<h5 class="sc_accordion_title">
+												<span class="sc_accordion_icon sc_accordion_icon_closed icon-plus-2"></span>
+												<span class="sc_accordion_icon sc_accordion_icon_opened icon-minus-2"></span>
+												{{ question.questiontext }} <span> Ponit : {{ question.point }}</span>
+											</h5>
+											<div class="sc_accordion_content">
+											<ul class="sc_list sc_list_style_iconed">
+												<li class="sc_list_item odd first">
+			  <!-- hhhhhhhhhhhhhhhhhhh-->			<span>
+                                            {% if question.type=='Choix multiple'%}
+
+                                                <form name="multiple">
+                                                    <table class="records_list">
+
+                                                        {% for rep in reponse %}
+                                                            {% if question.id == rep.idquestion.id %}    
+
+
+                                                                <tr>
+                                                                    <td>
+                                                                        <input type="checkbox" name ="chk{{rep.id}}" value={{rep.reponsecorrectradio}} default="0">
+                                                                    </td>
+                                                                    <td>  {{ rep.reponsetext }}</td>
+                                                                </tr>
+
+
+
+
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </table>
+                                                </form>
+                                            {% elseif question.type=='Choix unique' %}
+
+                                                <table class="records_list">
+
+                                                    {% for rep in reponse %}
+                                                        {% if question.id == rep.idquestion.id %}    
+
+
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="radio" name="radio{{rep.idquestion.id}}" value={{rep.reponsecorrecttext}}>
+                                                                </td>
+
+                                                                <td>  {{ rep.reponsetext }}</td>
+                                                            </tr>
+
+
+
+
+
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </table>
+
+                                            {% else %}
+
+                                                <table class="records_list">
+
+                                                    {% for rep in reponse %}
+                                                        {% if question.id == rep.idquestion.id %}    
+
+
+
+                                                            <tr>
+                                                                <td>  {{ rep.reponsetext }} :</td>
+                                                                <td><input type="text" name="inp{{rep.id}}"></td>
+
+                                                            </tr>
+
+
+
+
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </table>
+</li>
+												
+											</ul>
+											</div>
+                                            {% endif %}
+											<!-- hhhhhhhhhhhhhhhhhhh-->			</span>
+												
+										</div>
+										
+									</div>
+									
+								</div>
+								<!-- /Accordion section -->
+								
+
+								
+
+								{% endfor %}
+                                    <input type="hidden" name="text1" value="">
+                                    <input type="hidden" name="text2" value="">
+                                    <input type="hidden" name="text3" value="">
+                                    <input type="hidden" name="text4" value="">
+                                    
+                                    <input type="submit" value="Terminer" onclick="checkVal(this.form)">
+                                </form>
+
+
+								
+                            </section>
+                        </article>
+                    </div>
+                    <!-- /Content -->
+                   
+                </div>
+            </div>
+            <!-- /Content with sidebar -->
+                                    {% endblock %}

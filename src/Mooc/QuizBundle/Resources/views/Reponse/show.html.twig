@@ -1,0 +1,42 @@
+{% extends 'MoocQuizBundle::layout.html.twig' %}
+
+{% block body -%}
+    <center>
+    <h1>Reponse</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ entity.reponsetext }}</td>
+            </tr>
+            <tr>
+                <th>Reponse correcte</th>
+                <td>{{ entity.reponsecorrecttext }}</td>
+            </tr>
+            <tr>
+                <th>Vrai/Faux</th>
+                {% if entity.reponsecorrectradio==0%}
+                                    <td>Fausse</td>
+                                                    {% else %}
+
+                <td>Correcte</td>
+
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+
+        <a href="{{ path('reponse_list', { 'id': entity.idquestion.id }) }}">
+            Retourner a la liste
+        </a><br>
+        <a href="{{ path('reponse_edit', { 'id': entity.id }) }}">
+            Modifier
+        </a>
+    {{ form(delete_form) }}
+    </center>
+{% endblock %}

@@ -1,0 +1,43 @@
+{# empty Twig template #}
+{% extends 'MoocQuizBundle::layout.html.twig' %}
+
+{% block body -%}
+{% if (score>50) %}
+   
+<div class="page_content_wrap">
+                <div class="content_wrap">
+                    <div class="content">
+                        <article class="post_item post_item_404">
+                            <div class="post_content">
+                                <h1 class="page_title">{{score}}</h1>
+                                <h2 class="page_subtitle">Bravo vous aver reussie votre quiz !</h2>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+{% else %}
+
+    
+    
+    <!-- Content -->
+            <div class="page_content_wrap">
+                <div class="content_wrap">
+                    <div class="content">
+                        <article class="post_item post_item_404">
+                            <div class="post_content">
+                                <h1 class="page_title">{{score}}</h1>
+                                <h2 class="page_subtitle">Ouups vous aver ecchouer votre quiz :( </h2>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <!-- /Content -->
+
+{% endif %}
+{% endblock %}
+

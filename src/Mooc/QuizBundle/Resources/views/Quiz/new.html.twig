@@ -1,0 +1,94 @@
+{% extends 'MoocQuizBundle::layout.html.twig' %}
+
+{% block body -%}
+    <!-- Contact form -->
+                    <!-- Page title -->
+                <div class="page_top_wrap page_top_title page_top_breadcrumbs sc_pt_st1">
+                    <div class="content_wrap">
+                        <div class="breadcrumbs">
+                            <a class="breadcrumbs_item home" href="#">Home</a>
+                            <span class="breadcrumbs_delimiter"></span>
+                            <span class="breadcrumbs_item current">Contact Us</span>
+                        </div>
+                        <h1 class="page_title">Gestion des Quizs</h1>
+                    </div>
+                </div>
+                <!-- /Page title -->
+                <!-- Content without sidebar -->
+                <div class="page_content_wrap">
+                    <div class="content">
+                        <article class="post_item post_item_single page">						
+                            <section class="post_content">
+    <div class="sc_section bg_tint_dark sc_contact_bg_img">
+        <div class="sc_section_overlay sc_contact_bg_color" data-overlay="0.8" data-bg_color="#024b5e">
+            <div class="sc_section_content">
+                <div class="sc_content content_wrap margin_top_3em_imp margin_bottom_3_5em_imp">
+                    <div id="sc_contact_form" class="aligncenter width_80per">
+                        <h2 class="sc_contact_form_title">Ajouter une nouvelle Quiz</h2>
+                        <p class="sc_contact_form_description">Les champs obligatoire sont marquer avec une (*)</p>
+                        {{ form_start(form) }}
+                        <form id="sc_contact_form_1" data-formtype="contact" method="post">
+                            <div class="sc_contact_form_info">
+                                <div class="sc_contact_form_item sc_contact_form_field label_over">
+                                    Nom du Quiz: * 
+                                    <div>
+                                        {{ form_errors(form.quiznom) }}
+                                        {{ form_widget(form.quiznom) }}
+                                    </div>
+                                </div>
+                                <div class="sc_contact_form_item sc_contact_form_field label_over">
+                                    Type: *
+                                    <div>
+                                        {{ form_errors(form.type) }}
+                                        {{ form_widget(form.type) }}
+                                    </div>														</div>
+                                <div class="sc_contact_form_item sc_contact_form_field label_over">
+                                    Durre: *
+                                    <div>
+                                        {{ form_errors(form.time) }}
+                                        {{ form_widget(form.time) }}
+                                    </div>														</div>
+                                <div class="sc_contact_form_item sc_contact_form_message label_over">
+                                    Description:
+                                    <div>
+                                        {{ form_errors(form.quizdescription) }}
+                                        {{ form_widget(form.quizdescription) }}
+                                    </div>														</div>
+                                <div class="sc_contact_form_item sc_contact_form_message label_over">
+                                    Introduction: 
+                                    <div>
+                                        {{ form_errors(form.intro) }}
+                                        {{ form_widget(form.intro) }}
+                                    </div>														</div>
+
+                            </div>
+
+                            
+                            <div class="result sc_infobox"></div>
+                            <div>
+                                {{ form_widget(form.idformateur) }}
+                            </div>
+                            <div>
+                                {{ form_widget(form.idcour) }}
+                            </div>
+                            <div>
+                                {{ form_widget(form.dateajout) }}
+                            </div>
+                            <div class="sc_contact_form_item sc_contact_form_button">
+                                    <div>
+                                        {{ form_widget(form.submit) }}
+                                    </div>
+                            </div>
+                            {{ form_end(form) }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Contact form -->
+    </section>
+                        </article>
+                    </div>
+                </div>
+{% endblock %}

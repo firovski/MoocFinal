@@ -1,0 +1,47 @@
+Mooc\QuizBundle\Entity\Question:
+    type: entity
+    table: question
+    indexes:
+        idquiz:
+            columns:
+                - idquiz
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        questiontext:
+            type: string
+            nullable: false
+            length: 5000
+            fixed: false
+            comment: ''
+        type:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        point:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    manyToOne:
+        idquiz:
+            targetEntity: Quiz
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            nullable: false
+            joinColumns:
+                idquiz:
+                    referencedColumnName: ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

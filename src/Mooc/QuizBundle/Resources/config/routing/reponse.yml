@@ -1,0 +1,34 @@
+reponse:
+    path:     /
+    defaults: { _controller: "MoocQuizBundle:Reponse:index" }
+
+reponse_show:
+    path:     /{id}/show
+    defaults: { _controller: "MoocQuizBundle:Reponse:show" }
+
+reponse_new:
+    path:     /new/{id}
+    defaults: { _controller: "MoocQuizBundle:Reponse:new" }
+
+reponse_create:
+    path:     /create
+    defaults: { _controller: "MoocQuizBundle:Reponse:create" }
+    requirements: { _method: post }
+
+reponse_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MoocQuizBundle:Reponse:edit" }
+
+reponse_update:
+    path:     /{id}/update
+    defaults: { _controller: "MoocQuizBundle:Reponse:update" }
+    requirements: { _method: post|put }
+
+reponse_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MoocQuizBundle:Reponse:delete" }
+    requirements: { _method: post|delete }
+
+reponse_list:
+    path:     list/{id}
+    defaults: { _controller: "MoocQuizBundle:Reponse:list" }

@@ -1,0 +1,66 @@
+Mooc\QuizBundle\Entity\Assignement:
+    type: entity
+    table: assignement
+    indexes:
+        idbadge:
+            columns:
+                - idbadge
+                - iduser
+                - idquiz
+        iduser:
+            columns:
+                - iduser
+        idquiz:
+            columns:
+                - idquiz
+        IDX_E752B36A28F52404:
+            columns:
+                - idbadge
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        score:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    manyToOne:
+        idquiz:
+            targetEntity: Quiz
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            nullable: false
+            joinColumns:
+                idquiz:
+                    referencedColumnName: ID
+            orphanRemoval: false
+        idbadge:
+            targetEntity: Badge
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            nullable: false
+            joinColumns:
+                idbadge:
+                    referencedColumnName: ID
+            orphanRemoval: false
+        iduser:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            nullable: false
+            joinColumns:
+                iduser:
+                    referencedColumnName: ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

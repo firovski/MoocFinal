@@ -1,0 +1,45 @@
+{% extends 'MoocQuizBundle::layout.html.twig' %}
+
+{% block body -%}
+    <h1>Quiz</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom du quiz</th>
+                <td>{{ entity.quiznom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.quizdescription }}</td>
+            </tr>
+            <tr>
+                <th>Date d'ajout</th>
+                <td>{{ entity.dateajout|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Introduction</th>
+                <td>{{ entity.intro }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ entity.type }}</td>
+            </tr>
+            <tr>
+                <th>Durree</th>
+                <td>{{ entity.time }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <a href="{{ path('quiz_list', { 'id': entity.idcour.id })  }}">
+            Retourner a la liste        </a><br>
+        <a href="{{ path('quiz_edit', { 'id': entity.id }) }}">
+            Modifier
+        </a>
+    <>{{ form(delete_form) }}
+{% endblock %}

@@ -1,0 +1,33 @@
+quiz:
+    path:     /
+    defaults: { _controller: "MoocQuizBundle:Quiz:index" }
+
+quiz_show:
+    path:     /{id}/show
+    defaults: { _controller: "MoocQuizBundle:Quiz:show" }
+
+quiz_new:
+    path:     /new
+    defaults: { _controller: "MoocQuizBundle:Quiz:new" }
+
+quiz_create:
+    path:     /create
+    defaults: { _controller: "MoocQuizBundle:Quiz:create" }
+    requirements: { _method: post }
+
+quiz_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MoocQuizBundle:Quiz:edit" }
+
+quiz_update:
+    path:     /{id}/update
+    defaults: { _controller: "MoocQuizBundle:Quiz:update" }
+    requirements: { _method: post|put }
+
+quiz_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MoocQuizBundle:Quiz:delete" }
+    requirements: { _method: post|delete }
+quiz_list:
+    path:     /list/{id}
+    defaults: { _controller: "MoocQuizBundle:Quiz:list" }

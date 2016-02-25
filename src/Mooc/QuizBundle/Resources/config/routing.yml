@@ -1,0 +1,26 @@
+mooc_quiz_reponse:
+    resource: "@MoocQuizBundle/Resources/config/routing/reponse.yml"
+    prefix:   /reponse
+
+mooc_quiz_question:
+    resource: "@MoocQuizBundle/Resources/config/routing/question.yml"
+    prefix:   /question
+
+mooc_quiz_quiz:
+    resource: "@MoocQuizBundle/Resources/config/routing/quiz.yml"
+    prefix:   /quiz
+
+mooc_quiz_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MoocQuizBundle:Default:index }
+
+mooc_passer_quiz:
+    path: /exam/{id}
+    defaults:   { _controller: MoocQuizBundle:PasserQuiz:exam }
+mooc_passer_question:
+    path: /passerquestion/{id}
+    defaults:   { _controller: MoocQuizBundle:PasserQuiz:question }
+mooc_passer_question_entrainement:
+    path: /passerquestiontest/{id}
+    defaults:   { _controller: MoocQuizBundle:PasserQuiz:exam }
+

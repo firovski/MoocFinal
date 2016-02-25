@@ -1,0 +1,36 @@
+{% extends 'MoocQuizBundle::layout.html.twig' %}
+
+{% block body -%}
+    <h1>Question</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Question</th>
+                <td>{{ entity.questiontext }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ entity.type }}</td>
+            </tr>
+            <tr>
+                <th>Point</th>
+                <td>{{ entity.point }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+        <a href="{{ path('question_list', { 'id': entity.idquiz.id })  }}">
+            Retour a la liste        </a><br>
+
+        <a href="{{ path('question_edit', { 'id': entity.id }) }}">
+            Modifier
+        </a>
+
+    {{ form(delete_form) }}
+{% endblock %}

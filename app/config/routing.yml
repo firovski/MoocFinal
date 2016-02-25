@@ -1,0 +1,7 @@
+mooc_quiz:
+    resource: "@MoocQuizBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

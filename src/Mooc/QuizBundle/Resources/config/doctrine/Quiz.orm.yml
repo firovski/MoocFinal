@@ -1,0 +1,78 @@
+Mooc\QuizBundle\Entity\Quiz:
+    type: entity
+    table: quiz
+    indexes:
+        idformateur:
+            columns:
+                - idformateur
+                - idcour
+        idcour:
+            columns:
+                - idcour
+        IDX_A412FA92936DD7BA:
+            columns:
+                - idformateur
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        quiznom:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        quizdescription:
+            type: string
+            nullable: true
+            length: 5000
+            fixed: false
+            comment: ''
+        dateajout:
+            type: date
+            nullable: false
+            comment: ''
+        intro:
+            type: string
+            nullable: true
+            length: 5000
+            fixed: false
+            comment: ''
+        type:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        time:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    manyToOne:
+        idformateur:
+            targetEntity: Formateur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idformateur:
+                    referencedColumnName: ID
+            orphanRemoval: false
+        idcour:
+            targetEntity: Cour
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idcour:
+                    referencedColumnName: ID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,68 @@
+{% extends 'MoocQuizBundle::layout.html.twig' %}
+
+{% block body -%}
+
+    <!-- Page title -->
+    <div class="page_top_wrap page_top_title page_top_breadcrumbs">
+        <div class="content_wrap">
+            <div class="breadcrumbs">
+                <a class="breadcrumbs_item home" href="index.html">Accieul</a>
+                <span class="breadcrumbs_delimiter"></span>
+                <span class="breadcrumbs_item current">Quiz</span> 
+                <span class="breadcrumbs_delimiter"></span>
+                <span class="breadcrumbs_item current">Question</span> 
+            </div>
+            <h1 class="page_title">Question</h1>
+        </div>
+    </div>
+    <!-- Page title -->
+    <!-- Content -->
+    <div class="page_content_wrap">
+        <div class="content">
+            <center>
+                <!-- Tables section -->
+                <div class="sc_section" data-animation="animated fadeInUp normal">
+                    <div class="sc_line sc_line_style_solid"></div>
+                    <div class="sc_table width_80per">
+                        <table>
+                                <tr class="width_10per">
+                                    <th>Id</th>
+                                    <th>Texte du question</th>
+                                    <th>Type</th>
+                                    <th>Point</th>
+                                    <th>Actions</th>
+                                </tr>
+                            {% for entity in entities %}
+                                <tr>
+                                    <td><a href="{{ path('question_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                    <td>{{ entity.questiontext }}</td>
+                                    <td>{{ entity.type }}</td>
+                                    <td>{{ entity.point }}</td>
+                                    <td>
+                                        <ul class="sc_list sc_list_style_iconed">
+                                            <li class="sc_list_item even">
+                                                <span class="sc_list_icon icon-right-2"></span><a href="{{ path('question_show', { 'id': entity.id }) }}">Details</a>
+                                            </li>
+                                            <li class="sc_list_item odd sc_list_st1">
+                                                <span class="sc_list_icon icon-delete-2 sc_list_st2"></span><a href="{{ path('question_edit', { 'id': entity.id }) }}">Modifier</a>
+                                            </li>
+                                            <li>
+                                                <span class="sc_list_icon icon-check-2"></span><a href="{{ path('reponse_list', { 'id':entity.id }) }}">Reponse</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        
+                                <a href="{{ path('question_new',{ 'id':id}) }}" class="sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_large alignleft sc_button_iconed icon-user-2 sc_buttons_st1">
+                                    Creer une nouvelle question
+                                </a>
+                    </div>
+                </div>
+
+                <!-- /Tables section -->
+            </center>
+        </div>
+    </div>
+{% endblock %}
